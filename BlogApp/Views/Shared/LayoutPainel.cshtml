@@ -431,7 +431,7 @@
     <!-- Page level custom scripts -->
     <script src="~/painel/js/demo/chart-area-demo.js"></script>
     <script src="~/painel/js/demo/chart-pie-demo.js"></script>
-
+    @await RenderSectionAsync("Scripts", required:false);
 </body>
 
 </html>
