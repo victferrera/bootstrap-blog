@@ -12,6 +12,14 @@ namespace BlogApp.Controllers
         {
             _service = service;
         }
+
+        [Route("index")]
+        [HttpGet]
+        public IActionResult Index()
+        {
+            return View();
+        }
+
         [Route("novo")]
         [HttpGet]
         public IActionResult Criar()
