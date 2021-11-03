@@ -10,11 +10,12 @@ namespace Services.Models
         [Key]
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Campo obrigatório")]
+        [Required(ErrorMessage = "Campo {0} é obrigatório")]
         [MaxLength(60)]
         public string Nome { get; set; }
 
-        [Required(ErrorMessage = "Campo obrigatório")]
+        [Required(ErrorMessage = "Campo {0} é obrigatório")]
+        [DataType(DataType.MultilineText)]
         public string Biografia { get; set; }
 
         public string Youtube { get; set; }

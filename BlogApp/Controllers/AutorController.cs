@@ -32,5 +32,12 @@ namespace BlogApp.Controllers
             _service.Criar(autor);
             return View();
         }
+
+        [Route("teste")]
+        [HttpGet]
+        public IActionResult Teste()
+        {
+            return View();
+        }
     }
 }
