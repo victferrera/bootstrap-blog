@@ -3,6 +3,8 @@ using Services.Interface;
 using Services.Models;
 using Dominio;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Services
 {
@@ -28,6 +30,11 @@ namespace Services
             };
  
             _repository.Criar(autor);
+        }
+
+        public IEnumerable<Autor> ListarTodos()
+        {
+            return _repository.ListarTodos();
         }
     }
 }

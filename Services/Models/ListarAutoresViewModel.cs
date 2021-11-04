@@ -1,0 +1,10 @@
+﻿using Dominio;
+using System.Collections.Generic;
+
+namespace Services.Models
+{
+    public class ListarAutoresViewModel
+    {
+        public IEnumerable<Autor> Autores { get; set; }
+    }
+}

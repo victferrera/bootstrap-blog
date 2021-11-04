@@ -1,6 +1,8 @@
 ﻿using Repository.Interface;
 using Data;
 using Dominio;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Repository
 {
@@ -17,6 +19,11 @@ namespace Repository
             _context.Autor.Add(autor);
             _context.SaveChanges();
 
+        }
+
+        public IEnumerable<Autor> ListarTodos()
+        {
+            return _context.Autor.ToList();
         }
     }
 }

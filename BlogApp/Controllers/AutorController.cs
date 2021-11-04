@@ -17,7 +17,12 @@ namespace BlogApp.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            return View();
+            ListarAutoresViewModel viewModel = new ListarAutoresViewModel
+            {
+                Autores = _service.ListarTodos()
+            };
+
+            return View(viewModel);
         }
 
         [Route("novo")]
@@ -32,20 +37,20 @@ namespace BlogApp.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Criar(AutorViewModel autor)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return View();
             }
 
             _service.Criar(autor);
-            return View();
-        }
 
-        [Route("teste")]
-        [HttpGet]
-        public IActionResult Teste()
-        {
-            return View();
+            ListarAutoresViewModel viewModel = new ListarAutoresViewModel
+            {
+                Autores = _service.ListarTodos()
+            };
+
+            return RedirectToAction("Index", viewModel);
         }
     }
 }
+
