@@ -3,6 +3,7 @@ using Data;
 using Dominio;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace Repository
 {
@@ -28,7 +29,7 @@ namespace Repository
 
         public Autor ProcurarPorId(int id)
         {
-            return _context.Autor.Find(id);
+            return _context.Autor.Include(x => x.Posts).FirstOrDefault(x => x.Id == id);
         }
 
         public void Remover(Autor autor)
