@@ -51,6 +51,29 @@ namespace BlogApp.Controllers
 
             return RedirectToAction("Index", viewModel);
         }
+
+        [Route("remover")]
+        [HttpGet]
+        public IActionResult Remover(int id)
+        {
+            var autor = _service.ProcurarPorId(id);
+            return View(autor);
+        }
+
+        [Route("remover")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Remover(AutorViewModel autor)
+        {
+            _service.Remover(autor);
+            
+            ListarAutoresViewModel viewModel = new ListarAutoresViewModel
+            {
+                Autores = _service.ListarTodos()
+            };
+
+            return RedirectToAction("Index", viewModel);
+        }
     }
 }
 

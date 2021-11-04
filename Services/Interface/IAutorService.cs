@@ -8,5 +8,8 @@ namespace Services.Interface
     {
         void Criar(AutorViewModel autor);
         IEnumerable<Autor> ListarTodos();
+        Autor ProcurarPorId(int id);
+
+        void Remover(AutorViewModel autor);
     }
 }

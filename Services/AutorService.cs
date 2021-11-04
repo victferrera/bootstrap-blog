@@ -36,5 +36,16 @@ namespace Services
         {
             return _repository.ListarTodos();
         }
+
+        public Autor ProcurarPorId(int id)
+        {
+           return _repository.ProcurarPorId(id);
+        }
+
+        public void Remover(AutorViewModel autor)
+        {
+            var resultadoBuscaAutor = _repository.ProcurarPorId(autor.Id);
+            _repository.Remover(resultadoBuscaAutor);
+        }
     }
 }

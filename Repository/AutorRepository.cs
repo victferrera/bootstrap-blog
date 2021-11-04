@@ -25,5 +25,16 @@ namespace Repository
         {
             return _context.Autor.ToList();
         }
+
+        public Autor ProcurarPorId(int id)
+        {
+            return _context.Autor.Find(id);
+        }
+
+        public void Remover(Autor autor)
+        {
+            _context.Remove(autor);
+            _context.SaveChanges();
+        }
     }
 }
