@@ -10,8 +10,8 @@ namespace Dominio
         public string Subtitulo { get; set; }
         public string Conteudo { get; set; }
         public DateTime DataCriacao { get; set; }
-        public DateTime DataUltimaAlteracao { get; set; }
-        public DateTime AlteradoPor { get; set; }
+        public DateTime? DataUltimaAlteracao { get; set; }
+        public string AlteradoPor { get; set; }
         public Autor Autor { get; set; }
     }
 }

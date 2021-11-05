@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Data.Migrations
 {
-    public partial class initial : Migration
+    public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -51,7 +51,7 @@ namespace Data.Migrations
                     Descricao = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: false),
                     Conteudo = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DataCriacao = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    DataUltimaAlteracao = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    DataUltimaAlteracao = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -68,8 +68,8 @@ namespace Data.Migrations
                     Subtitulo = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Conteudo = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DataCriacao = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    DataUltimaAlteracao = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    AlteradoPor = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DataUltimaAlteracao = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    AlteradoPor = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     AutorId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>

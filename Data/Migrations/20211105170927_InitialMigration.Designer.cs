@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20211102034107_initial")]
-    partial class initial
+    [Migration("20211105170927_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -92,8 +92,8 @@ namespace Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("AlteradoPor")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("AlteradoPor")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("AutorId")
                         .HasColumnType("int");
@@ -105,7 +105,7 @@ namespace Data.Migrations
                     b.Property<DateTime>("DataCriacao")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("DataUltimaAlteracao")
+                    b.Property<DateTime?>("DataUltimaAlteracao")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Subtitulo")
@@ -137,7 +137,7 @@ namespace Data.Migrations
                     b.Property<DateTime>("DataCriacao")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("DataUltimaAlteracao")
+                    b.Property<DateTime?>("DataUltimaAlteracao")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Descricao")
