@@ -42,7 +42,7 @@
                             @Html.TextAreaFor(x => x.Biografia, new { htmlAttributes = new { @class = "form-control", placeholder = Model.Biografia } })
                         </div>
                         <div>
-                            @Html.HiddenFor(x => x.DataCriacao)
+                            @Html.HiddenFor(x => x.DataCriacao, new {htmlAttributes = new{ value="@Model.DataCriacao"}})
                         </div>
                         <div>
                             @Html.HiddenFor(x => x.Id)
