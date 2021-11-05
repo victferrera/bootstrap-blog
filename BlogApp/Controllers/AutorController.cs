@@ -75,19 +75,7 @@ namespace BlogApp.Controllers
         [HttpGet]
         public IActionResult Editar(int id)
         {
-            var resultadoBuscaAutor = _service.ProcurarPorId(id);
-
-            AutorViewModel viewModel = new AutorViewModel
-            {
-                Id = resultadoBuscaAutor.Id,
-                Nome = resultadoBuscaAutor.Nome,
-                Youtube = resultadoBuscaAutor.Youtube,
-                Twitter = resultadoBuscaAutor.Twitter,
-                Linkedin = resultadoBuscaAutor.Linkedin,
-                Github = resultadoBuscaAutor.Github,
-                DataCriacao = resultadoBuscaAutor.DataCriacao,
-                Biografia = resultadoBuscaAutor.Biografia
-            };
+            AutorViewModel viewModel = new AutorViewModel(_service.ProcurarPorId(id));
             return View(viewModel);
         }
 

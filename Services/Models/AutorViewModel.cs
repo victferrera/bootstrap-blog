@@ -7,6 +7,23 @@ namespace Services.Models
 {
     public class AutorViewModel
     {
+        public AutorViewModel()
+        {
+            
+        }
+
+        public AutorViewModel(Autor autor)
+        {
+            Id = autor.Id;
+            Nome = autor.Nome;
+            Youtube = autor.Youtube;
+            Twitter = autor.Twitter;
+            Linkedin = autor.Linkedin;
+            Github = autor.Github;
+            DataCriacao = autor.DataCriacao;
+            Biografia = autor.Biografia;
+        }
+        
         [Key]
         public int Id { get; set; }
 
