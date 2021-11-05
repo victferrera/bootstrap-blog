@@ -51,14 +51,16 @@ namespace BlogApp.Controllers
         [HttpGet]
         public IActionResult Remover(int id)
         {
-            var autor = _service.ProcurarPorId(id);
+            var autor = _service.ProcurarPorIdTrazerPosts(id);
+            
+            var viewModel = _service.ConverterParaAutorViewModel(autor);
 
-            if (autor == null)
+            if ( viewModel == null)
             {
                 return RedirectToAction(nameof(Index));
             }
                 
-            return View(autor);
+            return View(viewModel);
         }
 
         [Route("remover")]
@@ -75,7 +77,8 @@ namespace BlogApp.Controllers
         [HttpGet]
         public IActionResult Editar(int id)
         {
-            AutorViewModel viewModel = new AutorViewModel(_service.ProcurarPorId(id));
+            AutorViewModel viewModel = new AutorViewModel();
+            viewModel = _service.ConverterParaAutorViewModel(_service.ProcurarPorId(id));
             return View(viewModel);
         }
 
