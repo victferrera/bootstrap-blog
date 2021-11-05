@@ -44,12 +44,7 @@ namespace BlogApp.Controllers
 
             _service.Criar(autor);
 
-            ListarAutoresViewModel viewModel = new ListarAutoresViewModel
-            {
-                Autores = _service.ListarTodos()
-            };
-
-            return RedirectToAction("Index", viewModel);
+            return RedirectToAction(nameof(Index));
         }
 
         [Route("remover")]
@@ -57,6 +52,12 @@ namespace BlogApp.Controllers
         public IActionResult Remover(int id)
         {
             var autor = _service.ProcurarPorId(id);
+
+            if (autor == null)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+                
             return View(autor);
         }
 
@@ -66,13 +67,8 @@ namespace BlogApp.Controllers
         public IActionResult Remover(AutorViewModel autor)
         {
             _service.Remover(autor);
-            
-            ListarAutoresViewModel viewModel = new ListarAutoresViewModel
-            {
-                Autores = _service.ListarTodos()
-            };
 
-            return RedirectToAction("Index", viewModel);
+            return RedirectToAction(nameof(Index));
         }
     }
 }
