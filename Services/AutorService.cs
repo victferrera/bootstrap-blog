@@ -47,5 +47,21 @@ namespace Services
             var resultadoBuscaPorId = _repository.ProcurarPorId(autor.Id);
             _repository.Remover(resultadoBuscaPorId);
         }
+
+        public void Editar(AutorViewModel viewModel)
+        {
+            Autor autor = new Autor
+            {
+                Id = viewModel.Id,
+                Nome = viewModel.Nome,
+                Youtube = viewModel.Youtube,
+                Twitter = viewModel.Twitter,
+                Linkedin = viewModel.Linkedin,
+                Github = viewModel.Github,
+                DataCriacao = viewModel.DataCriacao,
+                Biografia = viewModel.Biografia
+            };
+            _repository.Editar(autor);
+        }
     }
 }

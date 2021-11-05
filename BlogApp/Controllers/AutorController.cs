@@ -70,6 +70,35 @@ namespace BlogApp.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
+        [Route("editar")]
+        [HttpGet]
+        public IActionResult Editar(int id)
+        {
+            var resultadoBuscaAutor = _service.ProcurarPorId(id);
+
+            AutorViewModel viewModel = new AutorViewModel
+            {
+                Id = resultadoBuscaAutor.Id,
+                Nome = resultadoBuscaAutor.Nome,
+                Youtube = resultadoBuscaAutor.Youtube,
+                Twitter = resultadoBuscaAutor.Twitter,
+                Linkedin = resultadoBuscaAutor.Linkedin,
+                Github = resultadoBuscaAutor.Github,
+                DataCriacao = resultadoBuscaAutor.DataCriacao,
+                Biografia = resultadoBuscaAutor.Biografia
+            };
+            return View(viewModel);
+        }
+
+        [Route("editar")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Editar(AutorViewModel viewModel)
+        {
+            _service.Editar(viewModel);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
 

@@ -9,7 +9,7 @@ namespace Services.Interface
         void Criar(AutorViewModel autor);
         IEnumerable<Autor> ListarTodos();
         Autor ProcurarPorId(int id);
-
+        void Editar(AutorViewModel viewModel);
         void Remover(AutorViewModel autor);
     }
 }

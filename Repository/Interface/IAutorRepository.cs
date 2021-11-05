@@ -10,5 +10,6 @@ namespace Repository.Interface
         Autor ProcurarPorIdTrazerPosts(int id);
         Autor ProcurarPorId(int id);
         void Remover(Autor autor);
+        void Editar(Autor autor);
     }
 }
