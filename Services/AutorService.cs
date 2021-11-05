@@ -39,7 +39,7 @@ namespace Services
 
         public Autor ProcurarPorId(int id)
         {
-           return _repository.ProcurarPorId(id);
+           return _repository.ProcurarPorIdTrazerPosts(id);
         }
 
         public void Remover(AutorViewModel autor)

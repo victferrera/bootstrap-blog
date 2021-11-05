@@ -27,9 +27,14 @@ namespace Repository
             return _context.Autor.ToList();
         }
 
-        public Autor ProcurarPorId(int id)
+        public Autor ProcurarPorIdTrazerPosts(int id)
         {
             return _context.Autor.Include(x => x.Posts).FirstOrDefault(x => x.Id == id);
+        }
+
+        public Autor ProcurarPorId(int id)
+        {
+            return _context.Autor.FirstOrDefault(x => x.Id == id);
         }
 
         public void Remover(Autor autor)
