@@ -12,6 +12,7 @@ namespace Mapping
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Descricao).HasMaxLength(60).IsRequired();
             builder.Property(x => x.Conteudo).IsRequired();
+            builder.Property(x => x.StatusAtivo).IsRequired();
             builder.Property(x => x.DataCriacao).IsRequired();
             builder.Property(x => x.DataUltimaAlteracao);
         }
