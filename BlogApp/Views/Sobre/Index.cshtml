@@ -9,7 +9,7 @@
     <a asp-action="novo" asp-controller="autor"><button class="btn btn-info mb-3">Novo</button></a>
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Descrições</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Sobre</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -36,7 +36,7 @@
                                 }
                                 else
                                 {
-                                    <td><span class="badge badge-pill badge-danger">Desabilitado</span></td>
+                                    <td><span class="badge badge-pill badge-dark">Desabilitado</span></td>
                                 }
                                 <td>
                                     <a asp-action="remover" asp-controller="autor" asp-route-id="@a.Id"><button class="btn btn-danger mb-3">Excluir</button></a>
