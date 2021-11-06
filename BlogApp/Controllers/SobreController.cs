@@ -44,7 +44,7 @@ namespace BlogApp.Controllers
         [HttpGet]
         public IActionResult Remover(int id)
         {
-            throw new NotImplementedException;
+            return View(_service.ProcurarPorId(id));
         }
     }
 }

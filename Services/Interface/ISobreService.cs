@@ -10,5 +10,7 @@ namespace Services.Interface
         void Criar(SobreViewModel viewModel);
         void AlterarStatusAtivo();
         ListarSobresViewModel ListarTodos();
+        SobreViewModel ProcurarPorId(int id);
+        SobreViewModel ConverterParaViewModel(Sobre sobre);
     }
 }

@@ -50,5 +50,25 @@ namespace Services
 
             return viewModel;
         }
+
+        public SobreViewModel ProcurarPorId(int id)
+        {
+            return ConverterParaViewModel(_repository.ProcurarPorId(id));
+        }
+
+        public SobreViewModel ConverterParaViewModel(Sobre sobre)
+        {
+            SobreViewModel viewModel = new SobreViewModel()
+            {
+                Descricao = sobre.Descricao,
+                Conteudo = sobre.Conteudo,
+                Id = sobre.Id,
+                StatusAtivoFormatoChar = sobre.StatusAtivo,
+                DataCriacao = sobre.DataCriacao,
+                DataUltimaAlteracao = sobre.DataUltimaAlteracao
+            };
+
+            return viewModel;
+        }
     }
 }

@@ -24,13 +24,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var a in Model.Sobres)
+                        @foreach (var sobre in Model.Sobres)
                         {
                             <tr>
-                                <td>@a.Id</td>
-                                <td>@a.Descricao</td>
-                                <td>@a.DataCriacao</td>
-                                @if (a.StatusAtivo == 'S')
+                                <td>@sobre.Id</td>
+                                <td>@sobre.Descricao</td>
+                                <td>@sobre.DataCriacao</td>
+                                @if (sobre.StatusAtivo == 'S')
                                 {
                                     <td><span class="badge badge-pill badge-success">Ativo</span></td>
                                 }
@@ -39,8 +39,15 @@
                                     <td><span class="badge badge-pill badge-dark">Desabilitado</span></td>
                                 }
                                 <td>
-                                    <a asp-action="remover" asp-controller="autor" asp-route-id="@a.Id"><button class="btn btn-danger mb-3">Excluir</button></a>
-                                    <a asp-action="editar" asp-controller="autor" asp-route-id="@a.Id"><button class="btn btn-info mb-3">Editar</button></a>
+                                    @if (sobre.StatusAtivo == 'S')
+                                    {
+                                        <a asp-action="editar" asp-controller="autor" asp-route-id="@sobre.Id"><button class="btn btn-info mb-3">Editar</button></a>
+                                    }
+                                    else
+                                    {
+                                        <a asp-action="remover" asp-controller="sobre" asp-route-id="@sobre.Id"><button class="btn btn-danger mb-3">Excluir</button></a>
+                                        <a asp-action="editar" asp-controller="autor" asp-route-id="@sobre.Id"><button class="btn btn-info mb-3">Editar</button></a>
+                                    }
                                 </td>
                             </tr>
                         }

@@ -37,5 +37,10 @@ namespace Repository
         {
             return _context.Sobre.SingleOrDefault(x => x.StatusAtivo == status);
         }
+
+        public Sobre ProcurarPorId(int id)
+        {
+            return _context.Sobre.SingleOrDefault(x => x.Id == id);
+        }
     }
 }
