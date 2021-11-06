@@ -5,7 +5,7 @@ namespace Services.Interface
 {
     interface ISobreService
     {
-        Sobre ConverterSobreViewModelParaSobre(Sobre sobre);
+        Sobre ConverterSobreViewModelParaSobre(SobreViewModel sobre);
         void Criar(SobreViewModel viewModel);
     }
 }

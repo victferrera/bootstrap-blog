@@ -6,6 +6,10 @@ namespace Services.Models
 {
     public class SobreViewModel
     {
+        public SobreViewModel()
+        {
+            DataCriacao = DateTime.Now;
+        }
         public int Id { get; set; }
         [Required(ErrorMessage = "Campo {0} obrigatório")]
         [DisplayName("Descrição")]
@@ -16,6 +20,6 @@ namespace Services.Models
         [DisplayName("Salvar como descrição principal")]
         public bool StatusAtivo { get; set; }
         public DateTime DataCriacao { get; set; }
-        public DateTime DataUltimaAlteracao { get; set; }
+        public DateTime? DataUltimaAlteracao { get; set; }
     }
 }
