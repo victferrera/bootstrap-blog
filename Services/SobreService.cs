@@ -14,6 +14,8 @@ namespace Services
                 Conteudo = viewModel.Conteudo,
                 StatusAtivo = viewModel.StatusAtivo == true ? 'S' : 'N'
             };
+
+            return sobre;
         }
 
         public void Criar(SobreViewModel viewModel)
