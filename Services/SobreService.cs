@@ -70,5 +70,10 @@ namespace Services
 
             return viewModel;
         }
+
+        public void Remover(SobreViewModel viewModel)
+        {
+            _repository.Remover(_repository.ProcurarPorId(viewModel.Id));
+        }
     }
 }

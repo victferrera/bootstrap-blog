@@ -42,5 +42,11 @@ namespace Repository
         {
             return _context.Sobre.SingleOrDefault(x => x.Id == id);
         }
+
+        public void Remover(Sobre sobre)
+        {
+            _context.Sobre.Remove(sobre);
+            _context.SaveChanges();
+        }
     }
 }

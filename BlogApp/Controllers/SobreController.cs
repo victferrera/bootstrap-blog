@@ -46,5 +46,14 @@ namespace BlogApp.Controllers
         {
             return View(_service.ProcurarPorId(id));
         }
+
+        [Route("remover")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Remover(SobreViewModel viewModel)
+        {
+            _service.Remover(viewModel);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

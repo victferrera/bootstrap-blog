@@ -10,5 +10,6 @@ namespace Repository.Interface
         Sobre ProcurarPorTipoStatus(char status);
         IEnumerable<Sobre> ListarTodos();
         Sobre ProcurarPorId(int id);
+        void Remover(Sobre sobre);
     }
 }

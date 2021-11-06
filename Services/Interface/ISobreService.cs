@@ -12,5 +12,6 @@ namespace Services.Interface
         ListarSobresViewModel ListarTodos();
         SobreViewModel ProcurarPorId(int id);
         SobreViewModel ConverterParaViewModel(Sobre sobre);
+        void Remover(SobreViewModel viewModel);
     }
 }
