@@ -13,6 +13,12 @@ namespace Services
         {
             _repository = repository;
         }
+
+        public void AlterarStatusAtivo()
+        {
+            throw new System.NotImplementedException();
+        }
+
         public Sobre ConverterSobreViewModelParaSobre(SobreViewModel viewModel)
         {
             Sobre sobre = new Sobre
@@ -28,8 +34,15 @@ namespace Services
 
         public void Criar(SobreViewModel viewModel)
         {
-
+            if(viewModel.StatusAtivo == true)           
+                _repository.AlterarStatusAtivo(_repository.ProcurarPorTipoStatus('S'));
+            
             _repository.Criar(ConverterSobreViewModelParaSobre(viewModel));
+        }
+
+        public Sobre ProcurarPorTipoStatus()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

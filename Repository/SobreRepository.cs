@@ -1,6 +1,8 @@
 ﻿using Data;
 using Dominio;
+using Microsoft.EntityFrameworkCore;
 using Repository.Interface;
+using System.Linq;
 
 namespace Repository
 {
@@ -11,10 +13,23 @@ namespace Repository
         {
             _context = context;
         }
+
+        public void AlterarStatusAtivo(Sobre sobre)
+        {
+            sobre.StatusAtivo = 'N';
+            _context.Entry(sobre).State = EntityState.Modified;
+            _context.SaveChanges();
+        }
+
         public void Criar(Sobre sobre)
         {
             _context.Sobre.Add(sobre);
             _context.SaveChanges();
+        }
+
+        public Sobre ProcurarPorTipoStatus(char status)
+        {
+            return _context.Sobre.SingleOrDefault(x => x.StatusAtivo == status);
         }
     }
 }
