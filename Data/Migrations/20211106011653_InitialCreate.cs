@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Data.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -50,6 +50,7 @@ namespace Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Descricao = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: false),
                     Conteudo = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    StatusAtivo = table.Column<string>(type: "nvarchar(1)", nullable: false),
                     DataCriacao = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DataUltimaAlteracao = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },

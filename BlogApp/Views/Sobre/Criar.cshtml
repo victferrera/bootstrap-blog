@@ -10,9 +10,9 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">Autor</h1>
+        <h1 class="h3 mb-2 text-gray-800">Sobre</h1>
         <p class="mb-4">
-            Preencha as informações abaixo para registrar um novo Autor.
+            Preencha as informações abaixo para registrar uma nova Descrição para o blog.
         </p>
 
         <!-- Form -->
@@ -32,6 +32,18 @@
                         <div class="form-group">
                             @Html.LabelFor(x => x.Conteudo)
                             @Html.EditorFor(x => x.Conteudo, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                Default radio
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                Default checked radio
+                            </label>
                         </div>
                         <button type="submit" class="btn btn-primary">Enviar</button>
                     }

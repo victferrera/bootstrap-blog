@@ -143,6 +143,10 @@ namespace Data.Migrations
                         .HasMaxLength(60)
                         .HasColumnType("nvarchar(60)");
 
+                    b.Property<string>("StatusAtivo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(1)");
+
                     b.HasKey("Id");
 
                     b.ToTable("Sobre");
