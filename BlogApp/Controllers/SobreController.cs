@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Services;
+using Services.Interface;
 using Services.Models;
 using System;
 using System.Collections.Generic;
@@ -10,6 +12,11 @@ namespace BlogApp.Controllers
     [Route("sobre")]
     public class SobreController : Controller
     {
+        private readonly ISobreService _service;
+        public SobreController(ISobreService service)
+        {
+            _service = service;
+        }
         public IActionResult Index()
         {
             return View();
@@ -25,9 +32,10 @@ namespace BlogApp.Controllers
         [Route("novo")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public bool Criar(SobreViewModel viewModel)
+        public IActionResult Criar(SobreViewModel viewModel)
         {
-            return viewModel.StatusAtivo;
+            _service.Criar(viewModel);
+            return RedirectToAction(nameof(Index));
         }
     }
 }

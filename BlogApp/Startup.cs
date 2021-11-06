@@ -25,6 +25,8 @@ namespace BlogApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<ISobreRepository, SobreRepository>();
+            services.AddTransient<ISobreService, SobreService>();
             services.AddTransient<IAutorRepository, AutorRepository>();
             services.AddTransient<IAutorService, AutorService>();
             services.AddDbContext<AppDbContext>(options =>

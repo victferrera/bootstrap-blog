@@ -3,7 +3,7 @@ using Services.Models;
 
 namespace Services.Interface
 {
-    interface ISobreService
+    public interface ISobreService
     {
         Sobre ConverterSobreViewModelParaSobre(SobreViewModel sobre);
         void Criar(SobreViewModel viewModel);

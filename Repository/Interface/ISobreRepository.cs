@@ -2,7 +2,7 @@
 
 namespace Repository.Interface
 {
-    interface ISobreRepository
+    public interface ISobreRepository
     {
         void Criar(Sobre sobre);
     }
