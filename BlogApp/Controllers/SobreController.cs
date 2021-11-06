@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Services.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,14 @@ namespace BlogApp.Controllers
         public IActionResult Criar()
         {
             return View();
+        }
+
+        [Route("novo")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public bool Criar(SobreViewModel viewModel)
+        {
+            return viewModel.StatusAtivo;
         }
     }
 }

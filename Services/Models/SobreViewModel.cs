@@ -14,7 +14,7 @@ namespace Services.Models
         [DisplayName("Conteúdo")]
         public string Conteudo { get; set; }
         [DisplayName("Salvar como descrição principal")]
-        public char StatusAtivo { get; set; }
+        public bool StatusAtivo { get; set; }
         public DateTime DataCriacao { get; set; }
         public DateTime DataUltimaAlteracao { get; set; }
     }
