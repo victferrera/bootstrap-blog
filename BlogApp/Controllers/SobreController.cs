@@ -39,5 +39,12 @@ namespace BlogApp.Controllers
             _service.Criar(viewModel);
             return RedirectToAction(nameof(Index));
         }
+
+        [Route("remover")]
+        [HttpGet]
+        public IActionResult Remover(int id)
+        {
+            throw new NotImplementedException;
+        }
     }
 }
