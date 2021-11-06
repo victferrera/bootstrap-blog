@@ -1,4 +1,5 @@
 ﻿using Dominio;
+using System.Collections.Generic;
 
 namespace Repository.Interface
 {
@@ -7,5 +8,6 @@ namespace Repository.Interface
         void Criar(Sobre sobre);
         void AlterarStatusAtivo(Sobre sobre);
         Sobre ProcurarPorTipoStatus(char status);
+        IEnumerable<Sobre> ListarTodos();
     }
 }

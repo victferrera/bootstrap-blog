@@ -3,6 +3,7 @@ using Repository;
 using Repository.Interface;
 using Services.Interface;
 using Services.Models;
+using System.Collections.Generic;
 
 namespace Services
 {
@@ -38,6 +39,16 @@ namespace Services
                 _repository.AlterarStatusAtivo(_repository.ProcurarPorTipoStatus('S'));
             
             _repository.Criar(ConverterSobreViewModelParaSobre(viewModel));
+        }
+
+        public ListarSobresViewModel ListarTodos()
+        {
+            ListarSobresViewModel viewModel = new ListarSobresViewModel()
+            {
+                Sobres = _repository.ListarTodos()
+            };
+
+            return viewModel;
         }
     }
 }

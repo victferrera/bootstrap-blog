@@ -2,6 +2,7 @@
 using Dominio;
 using Microsoft.EntityFrameworkCore;
 using Repository.Interface;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Repository
@@ -25,6 +26,11 @@ namespace Repository
         {
             _context.Sobre.Add(sobre);
             _context.SaveChanges();
+        }
+
+        public IEnumerable<Sobre> ListarTodos()
+        {
+            return _context.Sobre.ToList();
         }
 
         public Sobre ProcurarPorTipoStatus(char status)

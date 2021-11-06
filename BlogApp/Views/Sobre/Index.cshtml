@@ -1,5 +1,5 @@
 @{
-    @model Services.Models.ListarAutoresViewModel;
+    @model Services.Models.ListarSobresViewModel;
     Layout = "LayoutPainel";
 }
 
@@ -9,7 +9,7 @@
     <a asp-action="novo" asp-controller="autor"><button class="btn btn-info mb-3">Novo</button></a>
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Autores</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Descrições</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -19,16 +19,25 @@
                             <th>ID</th>
                             <th>Nome</th>
                             <th>Data</th>
+                            <th>Status</th>
                             <th>Editar</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var a in Model.Autores)
+                        @foreach (var a in Model.Sobres)
                         {
                             <tr>
                                 <td>@a.Id</td>
-                                <td>@a.Nome</td>
+                                <td>@a.Descricao</td>
                                 <td>@a.DataCriacao</td>
+                                @if (a.StatusAtivo == 'S')
+                                {
+                                    <td><span class="badge badge-pill badge-success">Ativo</span></td>
+                                }
+                                else
+                                {
+                                    <td><span class="badge badge-pill badge-danger">Desabilitado</span></td>
+                                }
                                 <td>
                                     <a asp-action="remover" asp-controller="autor" asp-route-id="@a.Id"><button class="btn btn-danger mb-3">Excluir</button></a>
                                     <a asp-action="editar" asp-controller="autor" asp-route-id="@a.Id"><button class="btn btn-info mb-3">Editar</button></a>
