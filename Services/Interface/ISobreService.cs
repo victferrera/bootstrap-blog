@@ -8,6 +8,5 @@ namespace Services.Interface
         Sobre ConverterSobreViewModelParaSobre(SobreViewModel sobre);
         void Criar(SobreViewModel viewModel);
         void AlterarStatusAtivo();
-        Sobre ProcurarPorTipoStatus();
     }
 }

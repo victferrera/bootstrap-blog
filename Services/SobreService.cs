@@ -34,15 +34,10 @@ namespace Services
 
         public void Criar(SobreViewModel viewModel)
         {
-            if(viewModel.StatusAtivo == true)           
+            if(viewModel.StatusAtivo == true)
                 _repository.AlterarStatusAtivo(_repository.ProcurarPorTipoStatus('S'));
             
             _repository.Criar(ConverterSobreViewModelParaSobre(viewModel));
-        }
-
-        public Sobre ProcurarPorTipoStatus()
-        {
-            throw new System.NotImplementedException();
         }
     }
 }
