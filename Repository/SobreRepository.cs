@@ -17,9 +17,17 @@ namespace Repository
 
         public void AlterarStatusAtivo(Sobre sobre)
         {
-            sobre.StatusAtivo = 'N';
-            _context.Entry(sobre).State = EntityState.Modified;
-            _context.SaveChanges();
+            if(sobre != null)
+            {
+                sobre.StatusAtivo = 'N';
+                _context.Entry(sobre).State = EntityState.Modified;
+                _context.SaveChanges();
+            }
+            else
+            {
+                return;
+            }
+
         }
 
         public void Criar(Sobre sobre)
@@ -47,6 +55,11 @@ namespace Repository
         {
             _context.Sobre.Remove(sobre);
             _context.SaveChanges();
+        }
+
+        public Sobre ProcurarPorStatus(char status)
+        {
+            return _context.Sobre.SingleOrDefault(x => x.StatusAtivo == status);
         }
     }
 }
