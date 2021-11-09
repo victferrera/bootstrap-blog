@@ -24,6 +24,7 @@ namespace Services
                 Descricao = viewModel.Descricao,
                 Conteudo = viewModel.Conteudo,
                 StatusAtivo = viewModel.StatusAtivo == true ? 'S' : 'N',
+                DataCriacao = viewModel.DataCriacao,
                 DataUltimaAlteracao = DateTime.Now
                 
             };
@@ -83,6 +84,9 @@ namespace Services
 
         public void Editar(SobreViewModel viewModel)
         {
+            if(viewModel.StatusAtivo == true)
+                _repository.AlterarStatusAtivo(_repository.ProcurarPorTipoStatus('S'));
+
             _repository.Editar(ConverterSobreViewModelParaSobre(viewModel));
         }
     }
