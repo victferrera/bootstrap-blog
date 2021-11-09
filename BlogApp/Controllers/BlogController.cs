@@ -15,7 +15,7 @@ namespace BlogApp.Controllers
         [Route("index")]
         [HttpGet]
         public IActionResult Index()
-        { 
+        {
             return View();
         }
 

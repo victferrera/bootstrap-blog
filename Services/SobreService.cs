@@ -1,4 +1,5 @@
 ﻿using Dominio;
+using System;
 using Repository;
 using Repository.Interface;
 using Services.Interface;
@@ -19,10 +20,12 @@ namespace Services
         {
             Sobre sobre = new Sobre
             {
+                Id = viewModel.Id,
                 Descricao = viewModel.Descricao,
                 Conteudo = viewModel.Conteudo,
                 StatusAtivo = viewModel.StatusAtivo == true ? 'S' : 'N',
-                DataCriacao = viewModel.DataCriacao
+                DataUltimaAlteracao = DateTime.Now
+                
             };
 
             return sobre;
@@ -30,9 +33,9 @@ namespace Services
 
         public void Criar(SobreViewModel viewModel)
         {
-            if(viewModel.StatusAtivo == true)
+            if (viewModel.StatusAtivo == true)
                 _repository.AlterarStatusAtivo(_repository.ProcurarPorTipoStatus('S'));
-            
+
             _repository.Criar(ConverterSobreViewModelParaSobre(viewModel));
         }
 
@@ -48,6 +51,8 @@ namespace Services
 
         public SobreViewModel ProcurarPorId(int id)
         {
+            if (_repository.ProcurarPorId(id) == null)
+                return null;
             return ConverterParaViewModel(_repository.ProcurarPorId(id));
         }
 
@@ -74,6 +79,11 @@ namespace Services
         public SobreViewModel ProcurarPorStatus(char status)
         {
             return ConverterParaViewModel(_repository.ProcurarPorTipoStatus(status));
+        }
+
+        public void Editar(SobreViewModel viewModel)
+        {
+            _repository.Editar(ConverterSobreViewModelParaSobre(viewModel));
         }
     }
 }

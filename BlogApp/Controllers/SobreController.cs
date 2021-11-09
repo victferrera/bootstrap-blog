@@ -44,6 +44,8 @@ namespace BlogApp.Controllers
         [HttpGet]
         public IActionResult Remover(int id)
         {
+            if (_service.ProcurarPorId(id) == null)
+                return RedirectToAction(nameof(Index));
             return View(_service.ProcurarPorId(id));
         }
 
@@ -53,6 +55,22 @@ namespace BlogApp.Controllers
         public IActionResult Remover(SobreViewModel viewModel)
         {
             _service.Remover(viewModel);
+            return RedirectToAction(nameof(Index));
+        }
+
+        [Route("editar")]
+        [HttpGet]
+        public IActionResult Editar(int id)
+        {
+            return View(_service.ProcurarPorId(id));
+        }
+
+        [Route("editar")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Editar(SobreViewModel viewModel)
+        {
+            _service.Editar(viewModel);
             return RedirectToAction(nameof(Index));
         }
     }

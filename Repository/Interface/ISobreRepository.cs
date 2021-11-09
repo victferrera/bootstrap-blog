@@ -11,5 +11,6 @@ namespace Repository.Interface
         IEnumerable<Sobre> ListarTodos();
         Sobre ProcurarPorId(int id);
         void Remover(Sobre sobre);
+        void Editar(Sobre sobre);
     }
 }

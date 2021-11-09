@@ -1,0 +1,55 @@
+﻿@{
+    @model Services.Models.SobreViewModel;
+    Layout = "LayoutPainel";
+}
+
+
+<!-- Main Content -->
+<div id="content">
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">Sobre</h1>
+        <p class="mb-4">
+            Use este formulário para alterar a descrição do Blog.
+        </p>
+
+        <!-- Form -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Cadastro</h6>
+            </div>
+            <div class="card-body">
+                <div class="col-md-8">
+                    @using (Html.BeginForm("editar", "Sobre", FormMethod.Post, new { id = "form-editar" }))
+                    {
+                        <div class="form-group">
+                            @Html.EditorFor(x => x.Descricao, new { htmlAttributes = new { @class = "form-control", placeholder = Model.Descricao } })
+                        </div>
+                        <div class="form-group">
+                            @Html.TextAreaFor(x => x.Conteudo, new { htmlAttributes = new { @class = "form-control", placeholder = Model.Conteudo } })
+                        </div>
+                        <div class="form-group">
+                            @Html.HiddenFor(x => x.Id)
+                        </div>
+                        <button type="submit" class="btn btn-primary">Salvar</button>
+                    }
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container-fluid -->
+</div>
+<!-- End of Main Content -->
+<!-- End of Content Wrapper -->
+
+@section Scripts {
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/painel/ckeditor/ckeditor.js"></script>
+<script type="text/javascript">
+    CKEDITOR.replace('Conteudo');
+</script>
+}
