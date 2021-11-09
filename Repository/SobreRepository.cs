@@ -61,5 +61,11 @@ namespace Repository
         {
             return _context.Sobre.SingleOrDefault(x => x.StatusAtivo == status);
         }
+
+        public void Editar(Sobre sobre)
+        {
+            _context.Entry(sobre).State = EntityState.Modified;
+            _context.SaveChanges();
+        }
     }
 }

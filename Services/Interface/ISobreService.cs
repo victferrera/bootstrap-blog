@@ -13,5 +13,7 @@ namespace Services.Interface
         SobreViewModel ConverterParaViewModel(Sobre sobre);
         void Remover(SobreViewModel viewModel);
         SobreViewModel ProcurarPorStatus(char status);
+
+        void Editar(SobreViewModel viewModel);
     }
 }
