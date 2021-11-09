@@ -44,6 +44,8 @@ namespace BlogApp.Controllers
         [HttpGet]
         public IActionResult Remover(int id)
         {
+            if (_service.ProcurarPorId(id) == null)
+                return RedirectToAction(nameof(Index));
             return View(_service.ProcurarPorId(id));
         }
 

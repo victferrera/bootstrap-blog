@@ -17,7 +17,7 @@ namespace Repository
 
         public void AlterarStatusAtivo(Sobre sobre)
         {
-            if(sobre != null)
+            if (sobre != null)
             {
                 sobre.StatusAtivo = 'N';
                 _context.Entry(sobre).State = EntityState.Modified;
