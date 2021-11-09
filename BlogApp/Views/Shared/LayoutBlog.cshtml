@@ -26,9 +26,9 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto py-4 py-lg-0">
-                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" @Html.ActionLink("Home","Index","Blog")</a></li>
-                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" @Html.ActionLink("About","About","Blog")</a></li>
-                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" @Html.ActionLink("Contact","Contact","Blog")</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" @Html.ActionLink("Home", "Index", "Blog")</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" @Html.ActionLink("About", "About", "Blog")</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" @Html.ActionLink("Contact", "Contact", "Blog")</a></li>
                 </ul>
             </div>
         </div>
@@ -87,8 +87,11 @@
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
-    <script src="js/scripts.js"></script>
-    @await RenderSectionAsync("Scripts", required:false)
+    
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous">
+    </script>
+    @await RenderSectionAsync("Scripts", required: false);
 </body>
 </html>
 
