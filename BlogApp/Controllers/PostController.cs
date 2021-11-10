@@ -4,6 +4,7 @@ using Services.Models;
 
 namespace BlogApp.Controllers
 {
+    [Route("post")]
     public class PostController : Controller
     {
         public IPostService _service;
@@ -11,6 +12,8 @@ namespace BlogApp.Controllers
         {
             _service = service;
         }
+        [Route("index")]
+        [HttpGet]
         public IActionResult Index()
         {
             ListarPostsViewModel viewModel = new ListarPostsViewModel
@@ -18,6 +21,13 @@ namespace BlogApp.Controllers
                 Posts = _service.ListarTodos()
             };
             return View(viewModel);
+        }
+
+        [Route("novo")]
+        [HttpGet]
+        public IActionResult Criar()
+        {
+            return View();
         }
     }
 }
