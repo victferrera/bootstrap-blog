@@ -8,9 +8,11 @@ namespace BlogApp.Controllers
     public class PostController : Controller
     {
         public IPostService _service;
-        public PostController(IPostService service)
+        public IAutorService _autorService;
+        public PostController(IPostService service, IAutorService autorService)
         {
             _service = service;
+            _autorService = autorService;
         }
         [Route("index")]
         [HttpGet]
@@ -27,7 +29,27 @@ namespace BlogApp.Controllers
         [HttpGet]
         public IActionResult Criar()
         {
-            return View();
+            var lista = new SelectList
+            (
+                _autorService.ListarTodos(),
+                "Id",
+                "Nome"
+            );
+
+            PostViewModel viewModel = new PostViewModel
+            {
+                AutoresDisponiveis = lista
+            };
+
+            return View(viewModel);
+        }
+
+        [Route("novo")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Criar(PostViewModel viewModel)
+        {
+            return RedirectToAction(nameof(Index));
         }
     }
 }
