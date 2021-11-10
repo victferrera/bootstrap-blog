@@ -1,7 +1,7 @@
 ﻿using Dominio;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Services.Models
 {
@@ -15,6 +15,6 @@ namespace Services.Models
         public DateTime? DataUltimaAlteracao { get; set; }
         public string AlteradoPor { get; set; }
         public Autor Autor { get; set; }
-        public SelectList AutoresDisponiveis { get; set; }
+        public IEnumerable<Autor> AutoresDisponiveis { get; set; }
     }
 }

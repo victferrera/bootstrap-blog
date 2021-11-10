@@ -39,7 +39,7 @@
                         </div>
                         <div class="form-group">
                             @Html.LabelFor(x => x.Autor)
-                            @Html.DropDownList("Id",Model.AutoresDisponiveis,"Selecione uma opção",new { @class="form-select"})
+                            <select asp-for="@Model.Autor" asp-items="@(new SelectList(Model.AutoresDisponiveis, "Id","Nome"))"></select>
                         </div>
                         <button type="submit" class="btn btn-primary">Enviar</button>
                     }

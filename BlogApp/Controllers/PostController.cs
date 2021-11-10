@@ -29,16 +29,9 @@ namespace BlogApp.Controllers
         [HttpGet]
         public IActionResult Criar()
         {
-            var lista = new SelectList
-            (
-                _autorService.ListarTodos(),
-                "Id",
-                "Nome"
-            );
-
             PostViewModel viewModel = new PostViewModel
             {
-                AutoresDisponiveis = lista
+                AutoresDisponiveis = _autorService.ListarTodos()
             };
 
             return View(viewModel);
