@@ -13,6 +13,13 @@ namespace Repository
         {
             _context = context;
         }
+
+        public void Criar(Post post)
+        {
+            _context.Post.Add(post);
+            _context.SaveChanges();
+        }
+
         public IEnumerable<Post> ListarTodos()
         {
             return _context.Post.ToList();

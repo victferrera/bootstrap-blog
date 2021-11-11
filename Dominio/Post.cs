@@ -13,5 +13,6 @@ namespace Dominio
         public DateTime? DataUltimaAlteracao { get; set; }
         public string AlteradoPor { get; set; }
         public Autor Autor { get; set; }
+        public int AutorId { get; set; }
     }
 }

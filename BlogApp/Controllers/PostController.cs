@@ -42,6 +42,11 @@ namespace BlogApp.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Criar(PostViewModel viewModel)
         {
+            if (!ModelState.IsValid)
+                return View();
+
+            _service.Criar(viewModel);
+
             return RedirectToAction(nameof(Index));
         }
     }
