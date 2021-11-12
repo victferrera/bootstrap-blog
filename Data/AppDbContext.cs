@@ -1,10 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Dominio;
 using Mapping;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Data
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext
     {
         public AppDbContext(DbContextOptions options) : base(options)
         {
@@ -21,6 +22,7 @@ namespace Data
             modelBuilder.ApplyConfiguration(new SobreMap());
             modelBuilder.ApplyConfiguration(new ContatoMap());
             modelBuilder.ApplyConfiguration(new PostMap());
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

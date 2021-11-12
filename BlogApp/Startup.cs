@@ -40,7 +40,7 @@ namespace BlogApp
             services.AddDatabaseDeveloperPageExceptionFilter();
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ContextIdentity>();
+                .AddEntityFrameworkStores<AppDbContext>();
             services.AddControllersWithViews();
         }
 

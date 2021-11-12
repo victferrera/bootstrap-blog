@@ -1,9 +1,8 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Auth
 {
-    public class Register
+    public class RegisterViewModel
     {
         [Required]
         [EmailAddress]
@@ -15,7 +14,6 @@ namespace Auth
 
         [DataType(DataType.Password)]
         [Display(Name ="Confirme a Senha")]
-        [Compare("Password",ErrorMessage ="As senhas não conferem")]
         public string ConfirmPassword { get; set; }
     }
 }
