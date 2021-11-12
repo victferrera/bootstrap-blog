@@ -10,7 +10,7 @@ using Data;
 
 namespace BlogApp.Data.Migrations
 {
-    [DbContext(typeof(AppDbContext))]
+    [DbContext(typeof(ContextIdentity))]
     [Migration("00000000000000_CreateIdentitySchema")]
     partial class CreateIdentitySchema
     {

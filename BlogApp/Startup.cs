@@ -10,6 +10,7 @@ using Repository;
 using Repository.Interface;
 using Services;
 using Services.Interface;
+using BlogApp.Data;
 
 namespace BlogApp
 {
@@ -39,7 +40,7 @@ namespace BlogApp
             services.AddDatabaseDeveloperPageExceptionFilter();
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<AppDbContext>();
+                .AddEntityFrameworkStores<ContextIdentity>();
             services.AddControllersWithViews();
         }
 

@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Services.Models;
 using Services.Interface;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BlogApp.Controllers
 {
+    [Authorize]
     [Route("autor")]
     public class AutorController : Controller
     {
