@@ -10,5 +10,6 @@ namespace Services.Interface
         Post ConverterViewModelParaPost(PostViewModel viewModel);
         void Criar(PostViewModel viewModel);
         ListarPostsViewModel PostsParaIndex();
+        PostViewModel Visualizar(int id);
     }
 }

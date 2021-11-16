@@ -12,7 +12,7 @@
             {
             <!-- Post preview-->
             <div class="post-preview">
-                <a href="post.html">
+                <a asp-action="visualizar" asp-controller="Post" asp-route-id="@post.Id">
                     <h2 class="post-title">@post.Titulo</h2>
                     <h3 class="post-subtitle">@post.Subtitulo</h3>
                 </a>

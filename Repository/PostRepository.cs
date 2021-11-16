@@ -30,5 +30,10 @@ namespace Repository
         {
             return _context.Post.Include(x => x.Autor).ToList();
         }
+
+        public Post ProcurarPorId(int id)
+        {
+            return _context.Post.SingleOrDefault(x => x.Id == id);
+        }
     }
 }

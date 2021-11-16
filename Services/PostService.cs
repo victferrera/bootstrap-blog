@@ -31,6 +31,21 @@ namespace Services
             return post;
         }
 
+        public PostViewModel ConverterPostParaViewModel(Post post)
+        {
+            var viewModel = new PostViewModel
+            {
+                Id = post.Id,
+                Titulo = post.Titulo,
+                Subtitulo = post.Subtitulo,
+                Conteudo = post.Conteudo,
+                DataCriacao = post.DataCriacao,
+                Autor = post.Autor
+            };
+
+            return viewModel;
+        }
+
         public IEnumerable<Post> ListarTodos()
         {
             return _repository.ListarTodos();
@@ -49,6 +64,11 @@ namespace Services
             };
 
             return posts;
+        }
+
+        public PostViewModel Visualizar(int id)
+        {
+            return ConverterPostParaViewModel(_repository.ProcurarPorId(id));
         }
     }
 }

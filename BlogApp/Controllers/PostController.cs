@@ -49,5 +49,12 @@ namespace BlogApp.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
+        [Route("visualizar")]
+        [HttpGet]
+        public IActionResult Visualizar(int id)
+        {
+            return View(_service.Visualizar(id));
+        }
     }
 }
