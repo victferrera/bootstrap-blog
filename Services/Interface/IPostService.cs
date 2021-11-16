@@ -9,5 +9,6 @@ namespace Services.Interface
         IEnumerable<Post> ListarTodos();
         Post ConverterViewModelParaPost(PostViewModel viewModel);
         void Criar(PostViewModel viewModel);
+        ListarPostsViewModel PostsParaIndex();
     }
 }

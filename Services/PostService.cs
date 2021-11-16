@@ -40,5 +40,15 @@ namespace Services
         {
             _repository.Criar(ConverterViewModelParaPost(viewModel));
         }
+
+        public ListarPostsViewModel PostsParaIndex()
+        {
+            var posts = new ListarPostsViewModel
+            {
+                Posts = _repository.ListarTodosComAutor()
+            };
+
+            return posts;
+        }
     }
 }

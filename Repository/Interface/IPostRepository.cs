@@ -7,5 +7,7 @@ namespace Repository.Interface
     {
         IEnumerable<Post> ListarTodos();
         void Criar(Post post);
+
+        IEnumerable<Post> ListarTodosComAutor();
     }
 }

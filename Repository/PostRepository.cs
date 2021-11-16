@@ -3,6 +3,7 @@ using Repository.Interface;
 using System.Linq;
 using System.Collections.Generic;
 using Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace Repository
 {
@@ -23,6 +24,11 @@ namespace Repository
         public IEnumerable<Post> ListarTodos()
         {
             return _context.Post.ToList();
+        }
+
+        public IEnumerable<Post> ListarTodosComAutor()
+        {
+            return _context.Post.Include(x => x.Autor).ToList();
         }
     }
 }
