@@ -10,14 +10,13 @@ namespace BlogApp.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<IdentityUser> _um;
+        private readonly SignInManager<IdentityUser> _sm;
 
-        public AccountController(UserManager<IdentityUser> userManager,
-            SignInManager<IdentityUser> signInManager)
+        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
         {
-            _userManager = userManager;
-            _signInManager = signInManager;
+            _um = userManager;
+            _sm = signInManager;
         }
 
         [HttpGet]
@@ -38,14 +37,21 @@ namespace BlogApp.Controllers
                     Email = viewModel.Email
                 };
 
-                var result = _userManager.CreateAsync(user, viewModel.Password);
-                if(result.IsCompletedSuccessfully)
+                var result = _um.CreateAsync(user, viewModel.Password);
+                
+                if(result.Result.Succeeded)
                 {
-                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    await _sm.SignInAsync(user, isPersistent: false);
                     return RedirectToAction("Index", "Painel");
                 }
             }
 
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Login()
+        {
             return View();
         }
     }

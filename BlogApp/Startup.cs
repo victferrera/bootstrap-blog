@@ -10,7 +10,6 @@ using Repository;
 using Repository.Interface;
 using Services;
 using Services.Interface;
-using BlogApp.Data;
 
 namespace BlogApp
 {
@@ -38,10 +37,14 @@ namespace BlogApp
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
-
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddEntityFrameworkStores<AppDbContext>();
             services.AddControllersWithViews();
+            services.ConfigureApplicationCookie(options => {
+                options.LoginPath = "/Account/Login";
+                options.LogoutPath = "/Account/Login";
+                options.AccessDeniedPath = "/Account/Denied";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

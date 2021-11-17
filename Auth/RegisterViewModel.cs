@@ -5,6 +5,9 @@ namespace Auth
     public class RegisterViewModel
     {
         [Required]
+        [Display(Name = "Nome")]
+        public string UserName { get; set; }
+        [Required]
         [EmailAddress]
         public string Email { get; set; }
 
@@ -14,6 +17,7 @@ namespace Auth
 
         [DataType(DataType.Password)]
         [Display(Name ="Confirme a Senha")]
+        [Compare(nameof(Password))]
         public string ConfirmPassword { get; set; }
     }
 }
