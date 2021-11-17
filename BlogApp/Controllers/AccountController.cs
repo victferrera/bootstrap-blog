@@ -29,7 +29,7 @@ namespace BlogApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Registro(RegisterViewModel viewModel)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 var user = new IdentityUser
                 {
@@ -38,8 +38,8 @@ namespace BlogApp.Controllers
                 };
 
                 var result = _um.CreateAsync(user, viewModel.Password);
-                
-                if(result.Result.Succeeded)
+
+                if (result.Result.Succeeded)
                 {
                     await _sm.SignInAsync(user, isPersistent: false);
                     return RedirectToAction("Index", "Painel");
@@ -52,6 +52,21 @@ namespace BlogApp.Controllers
         [HttpGet]
         public IActionResult Login()
         {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Login(LoginViewModel viewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await _sm.PasswordSignInAsync(viewModel.Email, viewModel.Password, false, false);
+
+                if(result.Succeeded)
+                    return RedirectToAction("Index", "Painel");
+            }
+
             return View();
         }
     }
