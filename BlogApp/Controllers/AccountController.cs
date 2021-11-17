@@ -69,5 +69,12 @@ namespace BlogApp.Controllers
 
             return View();
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Logout(LoginViewModel viewModel)
+        {
+            await _sm.SignOutAsync();
+            return RedirectToAction(nameof(Login));
+        }
     }
 }
