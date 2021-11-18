@@ -59,6 +59,9 @@ namespace Services
 
         public SobreViewModel ConverterParaViewModel(Sobre sobre)
         {
+            if (sobre == null)
+                return null;
+
             SobreViewModel viewModel = new SobreViewModel()
             {
                 Descricao = sobre.Descricao,
