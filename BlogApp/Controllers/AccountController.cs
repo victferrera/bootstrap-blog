@@ -1,13 +1,12 @@
 ﻿using Auth;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace BlogApp.Controllers
 {
+    [Authorize]
     public class AccountController : Controller
     {
         private readonly UserManager<IdentityUser> _um;
@@ -19,12 +18,14 @@ namespace BlogApp.Controllers
             _sm = signInManager;
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public IActionResult Registro()
         {
             return View();
         }
 
+        [AllowAnonymous]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Registro(RegisterViewModel viewModel)
@@ -49,12 +50,14 @@ namespace BlogApp.Controllers
             return View();
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public IActionResult Login()
         {
             return View();
         }
 
+        [AllowAnonymous]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginViewModel viewModel)
@@ -69,7 +72,7 @@ namespace BlogApp.Controllers
 
             return View();
         }
-
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Logout(LoginViewModel viewModel)
         {

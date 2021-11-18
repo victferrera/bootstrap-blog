@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Services.Interface;
 using Services.Models;
 
 namespace BlogApp.Controllers
 {
+    [Authorize]
     [Route("post")]
     public class PostController : Controller
     {
