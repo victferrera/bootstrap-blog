@@ -35,5 +35,11 @@ namespace Repository
         {
             return _context.Post.SingleOrDefault(x => x.Id == id);
         }
+
+        public void Remover(Post post)
+        {
+            _context.Post.Remove(post);
+            _context.SaveChanges();
+        }
     }
 }

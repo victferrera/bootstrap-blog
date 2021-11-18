@@ -70,5 +70,15 @@ namespace Services
         {
             return ConverterPostParaViewModel(_repository.ProcurarPorId(id));
         }
+
+        public void Remover(int id)
+        {
+            _repository.Remover(_repository.ProcurarPorId(id));
+        }
+
+        public Post ProcurarPorId(int id)
+        {
+            return _repository.ProcurarPorId(id);
+        }
     }
 }

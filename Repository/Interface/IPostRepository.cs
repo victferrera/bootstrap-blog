@@ -9,5 +9,6 @@ namespace Repository.Interface
         void Criar(Post post);
         IEnumerable<Post> ListarTodosComAutor();
         Post ProcurarPorId(int id);
+        void Remover(Post post);
     }
 }

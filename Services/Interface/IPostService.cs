@@ -11,5 +11,8 @@ namespace Services.Interface
         void Criar(PostViewModel viewModel);
         ListarPostsViewModel PostsParaIndex();
         PostViewModel Visualizar(int id);
+        PostViewModel ConverterPostParaViewModel(Post post);
+        void Remover(int id);
+        Post ProcurarPorId(int id);
     }
 }

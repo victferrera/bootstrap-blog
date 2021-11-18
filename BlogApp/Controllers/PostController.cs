@@ -58,5 +58,21 @@ namespace BlogApp.Controllers
         {
             return View(_service.Visualizar(id));
         }
+
+        [Route("remover")]
+        [HttpGet]
+        public IActionResult Remover(int id)
+        {
+            return View(_service.ConverterPostParaViewModel(_service.ProcurarPorId(id)));
+        }
+
+        [Route("remover")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Remover(PostViewModel viewModel)
+        {
+            _service.Remover(viewModel.Id);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
