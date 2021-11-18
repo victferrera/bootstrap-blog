@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Services;
 using System.Threading.Tasks;
 
 namespace BlogApp.Controllers
@@ -9,13 +10,10 @@ namespace BlogApp.Controllers
     [Authorize]
     public class AccountController : Controller
     {
-        private readonly UserManager<IdentityUser> _um;
-        private readonly SignInManager<IdentityUser> _sm;
-
-        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
+        public UserService _service;
+        public AccountController(UserService service)
         {
-            _um = userManager;
-            _sm = signInManager;
+            _service = service;
         }
 
         [AllowAnonymous]
@@ -32,19 +30,12 @@ namespace BlogApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser
-                {
-                    UserName = viewModel.Email,
-                    Email = viewModel.Email
-                };
+                var retorno = await _service.RegistroAsync(viewModel);
 
-                var result = _um.CreateAsync(user, viewModel.Password);
-
-                if (result.Result.Succeeded)
-                {
-                    await _sm.SignInAsync(user, isPersistent: false);
+                if (retorno == true)
                     return RedirectToAction("Index", "Painel");
-                }
+                else
+                    return View();
             }
 
             return View();
@@ -64,19 +55,25 @@ namespace BlogApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result = await _sm.PasswordSignInAsync(viewModel.Email, viewModel.Password, false, false);
-
-                if(result.Succeeded)
-                    return RedirectToAction("Index", "Painel");
+                var retorno = await _service.LoginAsync(viewModel);
+                if(retorno == true)
+                {
+                    return RedirectToAction("Index","Painel");
+                }
+                else
+                {
+                    return View();
+                }
             }
 
             return View();
         }
+
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> Logout(LoginViewModel viewModel)
         {
-            await _sm.SignOutAsync();
+            await _service.LogoutAsync();
             return RedirectToAction(nameof(Login));
         }
     }
