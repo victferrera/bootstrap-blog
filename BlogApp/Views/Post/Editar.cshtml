@@ -1,4 +1,8 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Identity
+@inject UserManager<IdentityUser> um
+
+
+@{
     @model Services.Models.PostViewModel;
     Layout = "LayoutPainel";
 }
@@ -39,7 +43,16 @@
                             <input type="hidden" asp-for="@Model.Id" value="@Model.Id" readonly>
                         </div>
                         <div>
+                            <input type="hidden" asp-for="@Model.DataCriacao" value="@Model.DataCriacao" readonly>
+                        </div>
+                        <div>
                             <input type="hidden" asp-for="@Model.AutorId" value="@Model.AutorId" readonly>
+                        </div>
+                        <div>
+                            <input type="hidden" asp-for="@Model.DataUltimaAlteracao" value="@DateTime.Now" readonly>
+                        </div>
+                        <div>
+                            <input type="hidden" asp-for="@Model.AlteradoPor" value="@um.GetUserName(User)" readonly>
                         </div>
                         <button type="submit" class="btn btn-info">Salvar</button>
                     }

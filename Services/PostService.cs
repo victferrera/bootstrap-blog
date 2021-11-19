@@ -26,7 +26,9 @@ namespace Services
                 Subtitulo = viewModel.Subtitulo,
                 Conteudo = viewModel.Conteudo,
                 DataCriacao = viewModel.DataCriacao.GetHashCode() == 0 ? DateTime.Now : viewModel.DataCriacao,
-                AutorId = viewModel.AutorId
+                AutorId = viewModel.AutorId,
+                DataUltimaAlteracao = viewModel.DataUltimaAlteracao,
+                AlteradoPor = viewModel.AlteradoPor
             };
 
             return post;
