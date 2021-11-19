@@ -7,6 +7,7 @@ namespace Services.Interface
     public interface IPostService
     {
         IEnumerable<Post> ListarTodos();
+        IEnumerable<Post> ListarTodosPaged();
         Post ConverterViewModelParaPost(PostViewModel viewModel);
         void Criar(PostViewModel viewModel);
         ListarPostsViewModel PostsParaIndex();

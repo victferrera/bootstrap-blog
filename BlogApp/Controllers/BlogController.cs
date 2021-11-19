@@ -34,5 +34,12 @@ namespace BlogApp.Controllers
         {
             return View();
         }
+
+        [Route("olders")]
+        [HttpGet]
+        public IActionResult Older()
+        {
+            return View(_postService.ListarTodosPaged());
+        }
     }
 }
