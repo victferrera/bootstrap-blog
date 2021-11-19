@@ -15,5 +15,6 @@ namespace Services.Interface
         void Remover(int id);
         Post ProcurarPorId(int id);
         void Editar(PostViewModel viewModel);
+        Post ProcurarPorIdEIncluirAutor(int id);
     }
 }

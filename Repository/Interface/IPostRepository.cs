@@ -11,5 +11,7 @@ namespace Repository.Interface
         Post ProcurarPorId(int id);
         void Remover(Post post);
         void Editar(Post post);
+        Post ProcurarPorIdEIncluirAutor(int id);
+
     }
 }

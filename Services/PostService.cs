@@ -72,7 +72,7 @@ namespace Services
 
         public PostViewModel Visualizar(int id)
         {
-            return ConverterPostParaViewModel(_repository.ProcurarPorId(id));
+            return ConverterPostParaViewModel(_repository.ProcurarPorIdEIncluirAutor(id));
         }
 
         public void Remover(int id)
@@ -83,6 +83,11 @@ namespace Services
         public Post ProcurarPorId(int id)
         {
             return _repository.ProcurarPorId(id);
+        }
+
+        public Post ProcurarPorIdEIncluirAutor(int id)
+        {
+            return _repository.ProcurarPorIdEIncluirAutor(id);
         }
 
         public void Editar(PostViewModel viewModel)

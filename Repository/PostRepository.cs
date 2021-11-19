@@ -47,5 +47,10 @@ namespace Repository
             _context.Entry(post).State = EntityState.Modified;
             _context.SaveChanges();
         }
+
+        public Post ProcurarPorIdEIncluirAutor(int id)
+        {
+            return _context.Post.Include(x => x.Autor).SingleOrDefault(x => x.Id == id);
+        }
     }
 }

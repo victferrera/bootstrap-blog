@@ -54,8 +54,10 @@ namespace BlogApp.Controllers
             return RedirectToAction(nameof(Index), new { message = "Registro criado com sucesso!"});
         }
 
+        [AllowAnonymous]
         [Route("visualizar")]
         [HttpGet]
+        
         public IActionResult Visualizar(int id)
         {
             return View(_service.Visualizar(id));
