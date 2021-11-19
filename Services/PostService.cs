@@ -21,6 +21,7 @@ namespace Services
         {
             Post post = new Post
             {
+                Id = viewModel.Id,
                 Titulo = viewModel.Titulo,
                 Subtitulo = viewModel.Subtitulo,
                 Conteudo = viewModel.Conteudo,
@@ -40,7 +41,8 @@ namespace Services
                 Subtitulo = post.Subtitulo,
                 Conteudo = post.Conteudo,
                 DataCriacao = post.DataCriacao,
-                Autor = post.Autor
+                Autor = post.Autor,
+                AutorId = post.AutorId
             };
 
             return viewModel;
@@ -79,6 +81,12 @@ namespace Services
         public Post ProcurarPorId(int id)
         {
             return _repository.ProcurarPorId(id);
+        }
+
+        public void Editar(PostViewModel viewModel)
+        {
+            var post = ConverterViewModelParaPost(viewModel);
+            _repository.Editar(post);
         }
     }
 }

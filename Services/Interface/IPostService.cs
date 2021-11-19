@@ -14,5 +14,6 @@ namespace Services.Interface
         PostViewModel ConverterPostParaViewModel(Post post);
         void Remover(int id);
         Post ProcurarPorId(int id);
+        void Editar(PostViewModel viewModel);
     }
 }

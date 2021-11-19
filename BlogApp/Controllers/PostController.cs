@@ -74,8 +74,23 @@ namespace BlogApp.Controllers
         public IActionResult Remover(PostViewModel viewModel)
         {
             _service.Remover(viewModel.Id);
-            ViewBag.SaveResult = true;
             return RedirectToAction("Index", new { message = "Registro removido com sucesso!"});
+        }
+
+        [Route("editar")]
+        [HttpGet]
+        public IActionResult Editar(int id)
+        {
+            return View(_service.ConverterPostParaViewModel(_service.ProcurarPorId(id)));
+        }
+
+        [Route("editar")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Editar(PostViewModel viewModel)
+        {
+            _service.Editar(viewModel);
+            return RedirectToAction("Index", new { message = "Registro alterado com sucesso!" });
         }
     }
 }

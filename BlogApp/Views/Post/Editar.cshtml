@@ -1,0 +1,61 @@
+﻿@{
+    @model Services.Models.PostViewModel;
+    Layout = "LayoutPainel";
+}
+
+<!-- Main Content -->
+<div id="content">
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">Editar publicação</h1>
+        <p class="mb-4">
+            Altere as informações abaixo para editar a publicação.
+        </p>
+
+        <!-- Form -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Cadastro</h6>
+            </div>
+            <div class="card-body">
+                <div class="mt-3 col-md-8">
+                    @using (Html.BeginForm("editar", "Post", FormMethod.Post, new { id = "form-remove" }))
+                    {
+                        <div class="form-group">
+                            <label for="titulo">Título</label>
+                            <input type="text" asp-for="@Model.Titulo" class="form-control" placeholder="@Model.Titulo">
+                        </div>
+                        <div class="form-group">
+                            <label for="Subtitulo">Subtítulo</label>
+                            <input type="text" asp-for="@Model.Subtitulo" class="form-control" placeholder="@Model.Subtitulo">
+                        </div>
+                        <div class="form-group">
+                            <label for="Conteudo">Conteúdo</label>
+                            <textarea asp-for="@Model.Conteudo" class="form-control">@Model.Conteudo</textarea>
+                        </div>
+                        <div>
+                            <input type="hidden" asp-for="@Model.Id" value="@Model.Id" readonly>
+                        </div>
+                        <div>
+                            <input type="hidden" asp-for="@Model.AutorId" value="@Model.AutorId" readonly>
+                        </div>
+                        <button type="submit" class="btn btn-info">Salvar</button>
+                    }
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container-fluid -->
+</div>
+<!-- End of Main Content -->
+<!-- End of Content Wrapper -->
+
+@section Scripts {
+    <script src="~/painel/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript">
+        CKEDITOR.replace('Conteudo');
+    </script>
+}

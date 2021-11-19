@@ -41,5 +41,11 @@ namespace Repository
             _context.Post.Remove(post);
             _context.SaveChanges();
         }
+
+        public void Editar(Post post)
+        {
+            _context.Entry(post).State = EntityState.Modified;
+            _context.SaveChanges();
+        }
     }
 }
