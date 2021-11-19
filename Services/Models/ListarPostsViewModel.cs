@@ -7,5 +7,6 @@ namespace Services.Models
     public class ListarPostsViewModel
     {
         public IEnumerable<Post> Posts { get; set; }
+        public string Message { get; set; } = null;
     }
 }

@@ -18,11 +18,13 @@ namespace BlogApp.Controllers
         }
         [Route("index")]
         [HttpGet]
-        public IActionResult Index()
+        public IActionResult Index(string message = null)
         {
             ListarPostsViewModel viewModel = new ListarPostsViewModel
             {
-                Posts = _service.ListarTodos()
+                Posts = _service.ListarTodos(),
+                Message = message
+                
             };
             return View(viewModel);
         }
@@ -49,7 +51,7 @@ namespace BlogApp.Controllers
 
             _service.Criar(viewModel);
 
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Index), new { message = "Registro criado com sucesso!"});
         }
 
         [Route("visualizar")]
@@ -72,7 +74,8 @@ namespace BlogApp.Controllers
         public IActionResult Remover(PostViewModel viewModel)
         {
             _service.Remover(viewModel.Id);
-            return RedirectToAction(nameof(Index));
+            ViewBag.SaveResult = true;
+            return RedirectToAction("Index", new { message = "Registro removido com sucesso!"});
         }
     }
 }

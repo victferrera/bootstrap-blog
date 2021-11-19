@@ -7,6 +7,12 @@
 <div class="container-fluid">
     <!-- DataTales Example -->
     <a asp-action="novo" asp-controller="post"><button class="btn btn-info mb-3">Novo</button></a>
+    @if (Model.Message != null)
+    {
+        <div class="alert alert-success" role="alert">
+            @Model.Message
+        </div>
+    }
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Listagem de Posts</h6>
@@ -26,16 +32,16 @@
                     <tbody>
                         @foreach (var a in Model.Posts)
                         {
-                        <tr>
-                            <td>@a.Id</td>
-                            <td>@a.Titulo</td>
-                            <td>@a.DataCriacao</td>
-                            <td>@a.DataUltimaAlteracao</td>
-                            <td>
-                                <a asp-action="remover" asp-controller="post" asp-route-id="@a.Id"><button class="btn btn-danger mb-3">Excluir</button></a>
-                                <a asp-action="editar" asp-controller="post" asp-route-id="@a.Id"><button class="btn btn-info mb-3">Editar</button></a>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td>@a.Id</td>
+                                <td>@a.Titulo</td>
+                                <td>@a.DataCriacao</td>
+                                <td>@a.DataUltimaAlteracao</td>
+                                <td>
+                                    <a asp-action="remover" asp-controller="post" asp-route-id="@a.Id"><button class="btn btn-danger mb-3">Excluir</button></a>
+                                    <a asp-action="editar" asp-controller="post" asp-route-id="@a.Id"><button class="btn btn-info mb-3">Editar</button></a>
+                                </td>
+                            </tr>
                         }
                     </tbody>
                 </table>
