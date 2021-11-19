@@ -52,5 +52,10 @@ namespace Repository
         {
             return _context.Post.Include(x => x.Autor).SingleOrDefault(x => x.Id == id);
         }
+
+        public IQueryable<Post> ListarTodosQueryable()
+        {
+            return _context.Post;
+        }
     }
 }

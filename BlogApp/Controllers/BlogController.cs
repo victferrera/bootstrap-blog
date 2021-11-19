@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Dominio;
+using Microsoft.AspNetCore.Mvc;
 using Services.Interface;
 using Services.Models;
+using System.Threading.Tasks;
 
 namespace BlogApp.Controllers
 {
@@ -37,9 +39,10 @@ namespace BlogApp.Controllers
 
         [Route("olders")]
         [HttpGet]
-        public IActionResult Older()
+        public async Task<IActionResult> Older(int? pageNumber)
         {
-            return View(_postService.ListarTodosPaged());
+            var posts = _postService.ListarTodosQueryable();
+            return View(await ListarPostsViewModelPaginated<Post>.CreateAsync(posts, pageNumber ?? 1, 3));
         }
     }
 }

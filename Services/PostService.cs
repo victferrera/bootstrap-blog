@@ -4,7 +4,7 @@ using Services.Interface;
 using Services.Models;
 using System.Collections.Generic;
 using System;
-using X.PagedList;
+using System.Linq;
 
 namespace Services
 {
@@ -97,11 +97,9 @@ namespace Services
             _repository.Editar(post);
         }
 
-        public IEnumerable<Post> ListarTodosPaged()
+        public IQueryable<Post> ListarTodosQueryable()
         {
-            var lista = _repository.ListarTodosComAutor();
-            PagedList<Post> posts = new PagedList<Post>(lista, 1, 2);
-            return posts;
+            return _repository.ListarTodosQueryable();
         }
     }
 }

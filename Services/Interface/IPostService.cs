@@ -1,13 +1,14 @@
 ﻿using Dominio;
 using Services.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Services.Interface
 {
     public interface IPostService
     {
         IEnumerable<Post> ListarTodos();
-        IEnumerable<Post> ListarTodosPaged();
+        IQueryable<Post> ListarTodosQueryable();
         Post ConverterViewModelParaPost(PostViewModel viewModel);
         void Criar(PostViewModel viewModel);
         ListarPostsViewModel PostsParaIndex();
