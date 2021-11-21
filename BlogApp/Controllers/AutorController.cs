@@ -17,11 +17,12 @@ namespace BlogApp.Controllers
 
         [Route("index")]
         [HttpGet]
-        public IActionResult Index()
+        public IActionResult Index(string mensagem = null)
         {
             ListarAutoresViewModel viewModel = new ListarAutoresViewModel
             {
-                Autores = _service.ListarTodos()
+                Autores = _service.ListarTodos(),
+                Mensagem = mensagem
             };
 
             return View(viewModel);
@@ -46,7 +47,7 @@ namespace BlogApp.Controllers
 
             _service.Criar(autor);
 
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Index), new { mensagem = "Autor criado com sucesso!"});
         }
 
         [Route("remover")]

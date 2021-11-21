@@ -23,8 +23,7 @@ namespace BlogApp.Controllers
             ListarPostsViewModel viewModel = new ListarPostsViewModel
             {
                 Posts = _service.ListarTodos(),
-                Message = message
-                
+                Message = message 
             };
             return View(viewModel);
         }
