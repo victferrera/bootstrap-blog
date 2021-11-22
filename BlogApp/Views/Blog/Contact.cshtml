@@ -9,41 +9,50 @@
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="site-heading">
-                    <h1>Clean Blog</h1>
-                    <span class="subheading">A Blog Theme by Start Bootstrap</span>
+                    <h1>Blog do Vitor</h1>
+                    <span class="subheading">Entre em contato</span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-<div class="container px-7 my-7 col-md-6">
-    @using (Html.BeginForm("salvarContato", "Contato", FormMethod.Post, new { id = "form-salvar" }))
-    {
-        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
-        <div class="mb-3">
-            @Html.LabelFor(x => x.Nome, new { htmlAttributes = new { @class = "form-label" } })
-            @Html.EditorFor(x => x.Nome, new { htmlAttributes = new { @class = "form-control" } })
-        </div>
-        <div class="mb-3">
-            @Html.LabelFor(x => x.Email, new { htmlAttributes = new { @class = "form-label" } })
-            @Html.EditorFor(x => x.Email, new { htmlAttributes = new { @class = "form-control" } })
-        </div>
-        <div>
-            @Html.LabelFor(x => x.Mensagem)
-        </div>
-        <div class="form-group">
-            @Html.TextAreaFor(x => x.Mensagem, new { htmlAttributes = new { @class = "form-control" } })
-        </div>
-        <div class="d-grid">
-            <button class="btn btn-primary btn-lg" id="submitButton" type="submit">Enviar</button>
-        </div>
-    }
-</div>
+<!-- Main Content-->
+        <main class="mb-4">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <p>Quer entrar em contato? Preencha o formulário abaixo para me enviar uma mensagem e entrarei em contato com você o mais breve possível!</p>
+                        <div class="my-5">
+                            @if(Model.Message != null)
+                            {
+                                <div class="alert alert-success" role="alert">
+                                    @Model.Message
+                                </div>
+                            }
+                            @Html.ValidationSummary(false,"", new {@class = "text-danger"})
+                            <form id="contactForm" asp-action="salvarContato" asp-controller="Contato" method="post">
+                                <div class="form-floating">
+                                    <input class="form-control" asp-for="@Model.Nome" type="text" placeholder="Digite seu nome..."/>
+                                    <label asp-for="@Model.Nome">Nome</label>
+                                </div>
+                                <div class="form-floating">
+                                    <input class="form-control" asp-for="@Model.Email" type="email" placeholder="Digite seu email..."/>
+                                    <label asp-for="@Model.Email">Email</label>
+                                </div>
+                                <div class="form-floating">
+                                    <textarea class="form-control" asp-for="@Model.Mensagem" placeholder="Digite a mensagem..." style="height: 12rem"></textarea>
+                                    <label asp-for="@Model.Mensagem">Mensagem</label>
+                                </div>
+                                <br />
+                                <!-- Submit Button-->
+                                <button class="btn btn-primary text-uppercase" id="submitButton" type="submit">Enviar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
 
 
-@section Scripts {
-    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
-    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
-}
 

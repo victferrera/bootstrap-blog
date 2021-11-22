@@ -13,18 +13,24 @@ namespace BlogApp.Controllers
         {
             _service = service;
         }
+
+        [HttpGet]
         public IActionResult Index()
         {
             return View();
         }
 
+        [AllowAnonymous]
         [Route("salvarContato")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult SalvarContato(ContatoViewModel viewModel)
         {
+            if(!ModelState.IsValid)
+                return View("../Blog/Contact");
+
             _service.Salvar(viewModel);
-            return RedirectToAction("contact", "Blog");
+            return RedirectToAction("Contact","Blog", new { message = "Mensagem enviada com sucesso! "});
         }
     }
 }

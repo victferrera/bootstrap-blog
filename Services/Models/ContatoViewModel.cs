@@ -14,5 +14,7 @@ namespace Services.Models
         [Required(ErrorMessage = "Campo {0} é obrigatório")]
         public string Mensagem { get; set; }
         public DateTime DataEnvio { get; set; }
+
+        public string Message { get; set; }
     }
 }

@@ -17,7 +17,6 @@ namespace BlogApp.Controllers
             _sobreService = sobreService;
         }
         [Route("index")]
-        [HttpGet]
         public IActionResult Index()
         {
             return View(_postService.PostsParaIndex());
@@ -32,9 +31,13 @@ namespace BlogApp.Controllers
 
         [Route("contact")]
         [HttpGet]
-        public IActionResult Contact()
+        public IActionResult Contact(string message = null)
         {
-            return View();
+            var viewModel = new ContatoViewModel{
+                Message = message
+            };
+
+            return View(viewModel);
         }
 
         [Route("olders")]
